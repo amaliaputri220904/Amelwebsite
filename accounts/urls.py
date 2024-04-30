@@ -1,10 +1,11 @@
-# blog/urls.py
+# urls.py
 
 from django.urls import path
 from . import views
 
 urlpatterns = [
     path('', views.home, name='home'),
+    path('about/', views.about, name='about'),  # Tambahkan rute untuk halaman "About"
     path('categories/', views.category_list, name='category_list'),
     path('posts/', views.post_list, name='post_list'),
     path('pages/', views.page_list, name='page_list'),

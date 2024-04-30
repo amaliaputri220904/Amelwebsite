@@ -3,12 +3,17 @@
 
 from django.shortcuts import render, get_object_or_404
 from .models import Category, Page, Blog
+from django.shortcuts import render
 
 def home(request):
     categories = Category.objects.all()
     pages = Page.objects.filter(is_published=True)
     posts = Blog.objects.filter(status=1)
     return render(request, 'home.html', {'categories': categories, 'pages': pages, 'posts': posts})
+
+def about(request):
+    return render(request, 'about.html')
+
 
 def category_list(request):
     categories = Category.objects.all()
