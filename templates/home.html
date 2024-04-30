@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to My Blog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fce4ec; /* Warna latar belakang pink */
+            color: #333; /* Warna teks */
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #c2185b; /* Warna judul */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #c2185b; /* Warna judul */
+            margin-top: 40px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            color: #c2185b; /* Warna tautan */
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to My Blog</h1>
+
+        <h2>Categories</h2>
+        <ul>
+            {% for category in categories %}
+                <li>{{ category.category }}</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Pages</h2>
+        <ul>
+            {% for page in pages %}
+                <li><a href="{% url 'page_detail' page.slug %}">{{ page.title }}</a></li>
+            {% endfor %}
+        </ul>
+
+        <h2>Posts</h2>
+        <ul>
+            {% for post in posts %}
+                <li><a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a></li>
+                {% if post.image %}
+                <img src="{{ post.image.url }}" alt="{{ post.title }}">
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
